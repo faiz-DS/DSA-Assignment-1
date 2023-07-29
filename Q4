@@ -1,0 +1,23 @@
+def increment_one(digits):
+    n = len(digits)
+
+    # Start from the least significant digit
+    for i in range(n - 1, -1, -1):
+        # If the current digit is less than 9, simply increment it by one and return the result
+        if digits[i] < 9:
+            digits[i] += 1
+            return digits
+        else:
+            # If the current digit is 9, set it to 0 and propagate the carry to the next digit
+            digits[i] = 0
+
+    # If all digits are 9 (e.g., [9, 9, 9]), add 1 at the most significant position
+    # by inserting a 1 at the beginning of the array
+    digits.insert(0, 1)
+
+    return digits
+
+# Test the function with the example input
+digits = [1, 2, 3]
+result = increment_one(digits)
+print(result)  # Output: [1, 2, 4]

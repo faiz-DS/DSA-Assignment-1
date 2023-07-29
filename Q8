@@ -1,0 +1,26 @@
+def find_error_numbers(nums):
+    n = len(nums)
+
+    # Calculate the expected sum and the actual sum of the set from 1 to n
+    expected_sum = n * (n + 1) // 2
+    actual_sum = sum(nums)
+
+    # Calculate the difference between the expected sum and the actual sum to find the missing number
+    missing_number = expected_sum - actual_sum
+
+    # Use a set to find the number that occurs twice
+    num_set = set()
+    duplicate_number = None
+
+    for num in nums:
+        if num in num_set:
+            duplicate_number = num
+            break
+        num_set.add(num)
+
+    return [duplicate_number, duplicate_number + missing_number]
+
+# Test the function with the example input
+nums = [1, 2, 2, 4]
+result = find_error_numbers(nums)
+print(result)  # Output: [2, 3]

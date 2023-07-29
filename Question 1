@@ -1,0 +1,25 @@
+def two_sum(nums, target):
+    # Create an empty hashmap to store the complements and their indices
+    complements = {}
+
+    # Loop through the array
+    for i, num in enumerate(nums):
+        # Calculate the complement required to reach the target
+        complement = target - num
+
+        # If the complement is already in the hashmap, we found the pair
+        if complement in complements:
+            # Return the indices of the two numbers that add up to the target
+            return [complements[complement], i]
+
+        # If the complement is not found, store the current number and its index in the hashmap
+        complements[num] = i
+
+    # If no solution is found, return an empty list or raise an exception, as per your preference.
+    return []
+
+# Test the function with the example input
+nums = [2, 7, 11, 15]
+target = 9
+result = two_sum(nums, target)
+print(result)  # Output: [0, 1]
